@@ -7,4 +7,5 @@ Example of a service that implements a healthz endpoint.
 
 ### Build the Docker image
 `docker build -t lucksolutions/go-microservice:1.0.0`
+
 `docker push lucksolutions/go-microservice:1.0.0`
