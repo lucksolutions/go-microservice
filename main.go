@@ -26,6 +26,10 @@ func main() {
 		log.Fatal(err)
 	}
 
+	/*
+		Setup the /healthz service handler
+	*/
+
 	hc := &healthz.Config{
 		Hostname: hostname,
 	}
@@ -40,6 +44,14 @@ func main() {
 		fmt.Fprintf(w, html, hostname, version)
 	})
 
+	/*
+		Create any additional service handlers here
+		...
+	*/
+
+	/*
+		Start the HTTP Server
+	*/
 	log.Printf("HTTP Service listening on %s", httpAddr)
 	httpErr := http.ListenAndServe(httpAddr, nil)
 	if httpErr != nil {

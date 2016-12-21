@@ -16,6 +16,9 @@ type handler struct {
 	metadata map[string]string
 }
 
+/*
+Handler for healthz service requests
+*/
 func Handler(hc *Config) (http.Handler, error) {
 	metadata := make(map[string]string)
 
@@ -23,12 +26,18 @@ func Handler(hc *Config) (http.Handler, error) {
 	return h, nil
 }
 
+/*
+Response to healthz requests
+*/
 type Response struct {
 	Hostname string            `json:"hostname"`
 	Metadata map[string]string `json:"metadata"`
 	Errors   []Error           `json:"error"`
 }
 
+/*
+Error messages returned by healthz
+*/
 type Error struct {
 	Description string            `json:"description"`
 	Error       string            `json:"error"`
@@ -47,7 +56,13 @@ func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	errors := make([]Error, 0)
 
 	/*
-	   Check for signs of bad health here. Database connections, services depended on, etc.
+		   Check for signs of bad health here. Database connections, services depended on, etc.
+
+		  errors = append(errors, Error{
+			Type:        "Type",
+			Description: "Description of error",
+			Error: err.Error,
+		  })
 	*/
 
 	response.Errors = errors
