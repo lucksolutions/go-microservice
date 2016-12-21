@@ -12,8 +12,13 @@ services:
     go-microservice:
         build:
             context: .
-            image: lucksolutions/go-microservice:1.0.0
+        ports:
+            - "80:80"
         networks: 
             - secrets
         links:
             - vault
+
+networks:
+    secrets:
+        driver: bridge
