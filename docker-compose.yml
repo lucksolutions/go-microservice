@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+    vault:
+        image: vault
+        cap_add: 
+            - IPC_LOCK
+        networks: 
+            - secrets
+
+    #Build application docker image
+    go-microservice:
+        build:
+            context: .
+            image: lucksolutions/go-microservice:1.0.0
+        networks: 
+            - secrets
+        links:
+            - vault
