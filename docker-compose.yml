@@ -5,6 +5,8 @@ services:
         image: vault
         cap_add: 
             - IPC_LOCK
+        ports:
+            - "8200:8200"
         networks: 
             - secrets
 
