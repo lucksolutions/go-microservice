@@ -7,7 +7,7 @@ import (
 
 	"net/http"
 
-	"github.com/fatdamyr/go-microservice/healthz"
+	"github.com/lucksolutions/go-microservice/healthz"
 )
 
 var version = "1.0.0"
